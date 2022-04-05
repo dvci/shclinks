@@ -1,0 +1,30 @@
+{
+  "name": "shclinks",
+  "version": "0.1.0",
+  "description": "prototype for SMART Health Links",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --quiet --fix",
+    "prettier": "prettier --check \"**/*.js\"",
+    "prettier:fix": "prettier --write \"**/*.js\"",
+    "check": "npm run lint && npm run prettier",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvci/shclinks.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/dvci/shclinks/issues"
+  },
+  "homepage": "https://github.com/dvci/shclinks#readme",
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "2.6.2"
+  }
+}
