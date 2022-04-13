@@ -149,7 +149,7 @@ app.get('/:file.json', async (req, res) => {
   const file = req.params.file;
   const filePath = `test/redirect/${file}.json`;
   if (fs.existsSync(filePath)) {
-    console.log('made it');
+    logger.debug(`file path ${filePath} exists`);
     const contents = fs.readFileSync(filePath);
     res.status(201);
     res.set('Content-Type', 'application/json');
