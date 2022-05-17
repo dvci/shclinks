@@ -32,7 +32,6 @@ The QR will be constructed from this JSON QR payload.
 */
 app.post('/qr', async (req, res) => {
   logger.info('Sending POST request to /qr');
-  console.log(process.env.PORT);
   const qrId = randomId();
   // set mapping of ID to object containing QR details
   QRs.set(qrId, {
@@ -50,8 +49,8 @@ app.post('/qr', async (req, res) => {
 /*
 POST to .url property of the JSON payload to redeem shclink.
 
-If the request is valid, server returns 301 status and Location header redirecting
-client to URL where file/Sharing Manifest is exposed.
+If the request is valid, server redirects to the 'clientSpecificUrl' path with a 
+301 Moved Permanently status. This sends a GET request to /qr/[qr ID]/claimed/[claimed ID]
 */
 app.post('/qr/:id/claim', (req, res) => {
   const qrId = req.params.id;
