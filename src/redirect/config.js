@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 require('dotenv').config();
 
 const PORT = parseInt(process.env.PORT || '3000');

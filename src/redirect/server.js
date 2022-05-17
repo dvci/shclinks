@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const express = require('express');
 const base64url = require('base64url');
 const crypto = require('crypto');
