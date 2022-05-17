@@ -60,7 +60,7 @@ app.post('/qr/:id/claim', (req, res) => {
 
   if (!policy || policy.claims.length >= (policy.request.claimsLimit || Infinity)) {
     res.status(403);
-    return res.json(`QR ${qrId} is not valid or has already been claimed`);
+    return res.send(`QR ${qrId} is not valid or has already been claimed`);
   }
 
   const clientSpecificUrl = `/qr/${qrId}/claimed/${randomId()}`;
@@ -91,13 +91,13 @@ app.get('/qr/:id/claimed/:cid', (req, res) => {
 
   if (!policy) {
     res.status(403);
-    return res.json(`QR ${id} is no longer valid`);
+    return res.send(`QR ${id} is no longer valid`);
   }
 
   const claimDetails = policy.claims.find(c => c.clientSpecificUrl === req.url);
   if (!claimDetails) {
     res.status(403);
-    return res.json(`This QR has not been correctly claimed`);
+    return res.send('This QR has not been correctly claimed');
   }
 
   res.json(
@@ -118,13 +118,13 @@ app.get('/qr/:id/claimed/:cid/files/:fileid', async (req, res) => {
 
   if (!policy) {
     res.status(403);
-    return res.json(`QR ${id} is no longer valid`);
+    return res.send(`QR ${id} is no longer valid`);
   }
 
   const claimDetails = policy.claims.find(c => c.clientSpecificUrl === `/qr/${id}/claimed/${cid}`);
   if (!claimDetails) {
     res.status(403);
-    return res.json(`This QR has not been correctly claimed`);
+    return res.send('This QR has not been correctly claimed');
   }
 
   const trueLocation = Object.entries(claimDetails.locationAlias).find(
