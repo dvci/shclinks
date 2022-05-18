@@ -9,7 +9,7 @@ const fetch = require('node-fetch');
 // create express app
 const app = express();
 app.use(express.json());
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   logger.info(`App listening at http://localhost:${PORT}`);
 });
 
@@ -152,5 +152,10 @@ app.get('/:file.json', async (req, res) => {
     res.status(201);
     res.set('Content-Type', 'application/json');
     res.send(JSON.parse(contents));
+  } else {
+    logger.debug(`file path ${filePath} does not exist`);
+    res.status(404).send(`The provided filepath ${filePath} does not exist.`);
   }
 });
+
+module.exports = { server };

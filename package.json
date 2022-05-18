@@ -4,7 +4,7 @@
   "description": "prototype for SMART Health Links",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --silent --runInBand",
     "lint": "eslint \"**/*.js\"",
     "lint:fix": "eslint \"**/*.js\" --quiet --fix",
     "prettier": "prettier --check \"**/*.js\"",
@@ -25,7 +25,9 @@
   "devDependencies": {
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "2.6.2"
+    "jest": "^28.1.0",
+    "prettier": "2.6.2",
+    "supertest": "^6.2.3"
   },
   "dependencies": {
     "base64url": "^3.0.1",

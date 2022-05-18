@@ -1,0 +1,12 @@
+{
+	"access": [
+		{
+			"type": "shclink-view",
+			"locations": [
+				"http://example.com/example1.json",
+				"http://example.com/example2.json"
+			],
+			"datatypes": ["application/fhir+json"]
+		}
+	]
+}
