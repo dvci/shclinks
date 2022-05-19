@@ -42,10 +42,9 @@ describe('test /qr/[qr id]/claim endpoint', () => {
 
 describe('test /qr/[qr id]/claimed/[claim id]/files/[file id] endpoint', () => {
   test('GET request to valid file location returns file content from /qr request', async () => {
-    const qrResponse = await supertest(server).post('/qr').send(EXAMPLE_REQUEST_BODY).expect(200);
+    const qrResponse = await supertest(server).post('/qr').send(EXAMPLE_REQUEST_BODY);
     const claimResponse = await supertest(server)
-      .post(qrResponse.body.url.replace('http://localhost:3000', ''))
-      .expect(301);
+      .post(qrResponse.body.url.replace('http://localhost:3000', ''));
     await supertest(server)
       .get(claimResponse.header.location.replace('http://localhost:3000', ''))
       .expect(200)

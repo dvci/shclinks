@@ -145,7 +145,7 @@ static file hosting for testing.
 */
 app.get('/:file.json', async (req, res) => {
   const file = req.params.file;
-  const filePath = `test/redirect/${file}.json`;
+  const filePath = `test/redirect/fixtures/${file}.json`;
   if (fs.existsSync(filePath)) {
     logger.debug(`file path ${filePath} exists`);
     const contents = fs.readFileSync(filePath);
